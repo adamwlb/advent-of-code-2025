@@ -14,5 +14,6 @@ Tests are included for the sample input published on the puzzle site.
 
 The sample input is included in the `src/test/resources` directory.  
 My personal puzzle input is not included per Advent of Code recommendations.  
-If you want to run this yourself, you can add your input to `src/resources` as text files, named `day1.txt`, `day2.txt`
+If you want to run this yourself, you can add your input to `src/main/resources` as text files, named `day1.txt`,
+`day2.txt`
 and so-on.
