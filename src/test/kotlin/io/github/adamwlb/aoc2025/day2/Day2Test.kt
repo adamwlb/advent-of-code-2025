@@ -1,5 +1,6 @@
 package io.github.adamwlb.aoc2025.day2
 
+import io.github.adamwlb.aoc2025.common.Range
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest

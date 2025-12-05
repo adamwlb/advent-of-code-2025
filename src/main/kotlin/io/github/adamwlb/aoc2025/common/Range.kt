@@ -1,4 +1,4 @@
-package io.github.adamwlb.aoc2025.day2
+package io.github.adamwlb.aoc2025.common
 
 import java.math.BigInteger
 
