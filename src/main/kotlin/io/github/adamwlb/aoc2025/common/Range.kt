@@ -10,6 +10,10 @@ class Range(val first: BigInteger, val last: BigInteger) {
             if (next > last) null else next
         }
 
+    fun range(): BigInteger = last - first
+
+    fun contains(range: Range) = first <= range.first && last + BigInteger.ONE >= range.last
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
