@@ -1,4 +1,4 @@
-package io.github.adamwlb.aoc2025.day2
+package io.github.adamwlb.aoc2025.common
 
 import java.math.BigInteger
 
@@ -9,6 +9,10 @@ class Range(val first: BigInteger, val last: BigInteger) {
             val next = prev + BigInteger.ONE
             if (next > last) null else next
         }
+
+    fun range(): BigInteger = last - first
+
+    fun contains(range: Range) = first <= range.first && last + BigInteger.ONE >= range.last
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

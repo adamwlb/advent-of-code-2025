@@ -1,5 +1,6 @@
 package io.github.adamwlb.aoc2025.day2
 
+import io.github.adamwlb.aoc2025.common.Range
 import java.io.File
 import java.math.BigInteger
 

@@ -29,15 +29,15 @@ class Day4(inputPath: String) {
     }
 
     fun part2(): Int {
-        val maxIterations = 100 // Don't want to go on forever
         val totalRolls = countRolls()
 
-        repeat(maxIterations) {
-            val toRemove = accessibleRollCoordinates()
+        var toRemove: List<Pair<Int, Int>>
+        do {
+            toRemove = accessibleRollCoordinates()
             for ((x, y) in toRemove) {
                 grid.set(x, y, '.')
             }
-        }
+        } while (toRemove.isNotEmpty())
 
         val finalRolls = countRolls()
         return totalRolls - finalRolls
