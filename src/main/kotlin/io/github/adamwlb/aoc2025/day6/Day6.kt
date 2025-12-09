@@ -7,6 +7,7 @@ import java.math.BigInteger
 class Day6(inputPath: String) {
 
     val problems: List<Problem> = parseInput(inputPath)
+    val problemsPart2: List<Problem> = parseInputPart2(inputPath)
 
     private fun parseInput(inputPath: String): List<Problem> {
         val allLines = File(inputPath).readLines()
@@ -30,7 +31,56 @@ class Day6(inputPath: String) {
         return transposedColumns.zip(parsedOperations, ::Problem)
     }
 
-    fun part1(): BigInteger = problems.map { it.solve() }.sumOf { it }
+    private fun parseInputPart2(inputPath: String): List<Problem> {
+        val allLines = File(inputPath).readLines()
+        val dataLines = allLines.dropLast(1)
+        val operationLine = allLines.last().trim()
 
-    fun part2(): BigInteger = throw NotImplementedError()
+        val problemStarts = mutableListOf<Int>()
+        for (i in operationLine.indices) {
+            if (operationLine[i] != ' ') {
+                problemStarts.add(i)
+            }
+        }
+
+        val problems = mutableListOf<Problem>()
+        val maxWidth = dataLines.maxOfOrNull { it.length } ?: 0
+
+        for (i in problemStarts.indices) {
+            val startChar = problemStarts[i]
+            val endChar = problemStarts.getOrElse(i + 1) { maxWidth }
+            val operator = Operator.fromSymbol(operationLine[startChar])
+
+            val finalOperands = mutableListOf<Int>()
+            val numOperands = endChar - startChar
+
+            for (j in 0 until numOperands) {
+                val charIndex = startChar + j
+
+                val operandString = dataLines.mapNotNull { row ->
+                    val char = row.getOrNull(charIndex)
+                    if (char != null && char.isDigit()) {
+                        char
+                    } else {
+                        null
+                    }
+                }.joinToString("")
+
+                if (operandString.isNotEmpty()) {
+                    finalOperands.add(operandString.toInt())
+                }
+            }
+
+            problems.add(Problem(finalOperands.toList(), operator))
+        }
+
+        return problems.reversed()
+    }
+
+    fun part1(): BigInteger = problemsGrandTotal(problems)
+
+    fun part2(): BigInteger = problemsGrandTotal(problemsPart2)
+
+    private fun problemsGrandTotal(problems: Iterable<Problem>): BigInteger = problems.map { it.solve() }.sumOf { it }
+
 }

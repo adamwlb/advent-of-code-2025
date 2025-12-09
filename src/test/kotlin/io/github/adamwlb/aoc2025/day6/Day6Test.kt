@@ -21,15 +21,14 @@ class Day6Test {
     }
 
     @Test
-    fun `can parse sample input`() {
+    fun `can parse sample input for part 1`() {
         val expected = listOf(
             Problem(listOf(123, 45, 6), MULTIPLY),
             Problem(listOf(328, 64, 98), PLUS),
             Problem(listOf(51, 387, 215), MULTIPLY),
             Problem(listOf(64, 23, 314), PLUS)
         )
-
-        assertEquals(underTest.problems, expected)
+        assertEquals(expected, underTest.problems)
     }
 
     @Test
@@ -38,7 +37,18 @@ class Day6Test {
     }
 
     @Test
-    fun part2() {
+    fun `can parse sample input for part 2`() {
+        val expected = listOf(
+            Problem(listOf(4, 431, 623), PLUS),
+            Problem(listOf(175, 581, 32), MULTIPLY),
+            Problem(listOf(8, 248, 369), PLUS),
+            Problem(listOf(356, 24, 1), MULTIPLY),
+        )
+        assertEquals(expected, underTest.problemsPart2)
+    }
+
+    @Test
+    fun `solves part 2 with sample input`() {
         assertEquals(BigInteger("3263827"), underTest.part2())
     }
 }
