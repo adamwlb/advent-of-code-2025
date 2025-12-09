@@ -9,7 +9,9 @@ class Day5(inputPath: String) {
     val inventory = parseInput(inputPath)
 
     fun parseInput(path: String): Inventory {
-        val (rangeLines, idLines) = File(path).readText().trim().split("\n\n")
+        // Normalize line endings to ensure this works on both Windows and Mac
+        val normalizedText = File(path).readText().replace("\r\n", "\n").trim()
+        val (rangeLines, idLines) = normalizedText.split("\n\n")
 
         val ranges = rangeLines.lineSequence().map { line ->
                 val (start, end) = line.split('-')
