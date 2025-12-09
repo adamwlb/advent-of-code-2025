@@ -5,6 +5,7 @@ import io.github.adamwlb.aoc2025.day2.Day2
 import io.github.adamwlb.aoc2025.day3.Day3
 import io.github.adamwlb.aoc2025.day4.Day4
 import io.github.adamwlb.aoc2025.day5.Day5
+import io.github.adamwlb.aoc2025.day6.Day6
 
 fun main() {
     day1()
@@ -12,6 +13,7 @@ fun main() {
     day3()
     day4()
     day5()
+    day6()
 }
 
 fun day1() {
@@ -42,4 +44,10 @@ fun day5() {
     val inputPath = "src/main/resources/day5.txt"
     println("Day 5 part 1: " + Day5(inputPath).part1())
     println("Day 5 part 2: " + Day5(inputPath).part2())
+}
+
+fun day6() {
+    val inputPath = "src/main/resources/day6.txt"
+    println("Day 6 part 1: " + Day6(inputPath).part1())
+    println("Day 6 part 2: " + Day6(inputPath).part2())
 }
